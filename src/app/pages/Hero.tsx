@@ -1,16 +1,29 @@
 import { Link } from "react-router";
+import ambientVideoGeneration from "../media/Ambient_Video_Generation.mp4";
 
-const BG_IMAGE =
-  "https://images.unsplash.com/photo-1771686264311-037f008c7863?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZWVwJTIwb2NlYW4lMjB1bmRlcndhdGVyJTIwYmx1ZSUyMGJpb2x1bWluZXNjZW50fGVufDF8fHx8MTc3MjgyOTc0NXww&ixlib=rb-4.1.0&q=80&w=1080";
+const VIDEO_BG = ambientVideoGeneration;
 
 export function Hero() {
   return (
-    <section
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
-      style={{
-        background: `linear-gradient(to bottom, #030d1a 0%, #061525cc 40%, #030d1a 100%), url(${BG_IMAGE}) center/cover no-repeat`,
-      }}
-    >
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#030d1a]">
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      >
+        <source src={VIDEO_BG} type="video/mp4" />
+      </video>
+
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, #030d1acc 0%, #061525b3 40%, #030d1ae6 100%)",
+        }}
+      />
+
       {/* Animated glow blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div

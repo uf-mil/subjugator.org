@@ -1,5 +1,6 @@
 import { Github, Instagram, Mail, Youtube } from "lucide-react";
 import { Link, NavLink } from "react-router";
+import subjugatorLogo from "../media/subjugator_logo.png";
 
 // Custom Discord Icon for the footer link, since lucide-react doesn't have a built in one
 function DiscordIcon({ size = 16 }: { size?: number }) {
@@ -32,25 +33,19 @@ const socials = [
   { icon: <Mail size={16} />, label: "Email", href: "mailto:subjugatoruf@gmail.com" },
 ];
 
+const footerBrandImage = subjugatorLogo;
+
 export function Footer() {
   return (
     <footer className="bg-[#030d1a] border-t border-cyan-900/20">
       <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
         {/* Brand */}
-        <Link to="/" className="flex items-center gap-2 group shrink-0">
-          <div className="w-7 h-7 rounded-full bg-cyan-400/20 border border-cyan-400/40 flex items-center justify-center">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-cyan-400">
-              <ellipse cx="12" cy="12" rx="10" ry="5" stroke="currentColor" strokeWidth="1.5" />
-              <path d="M2 12 C4 8, 8 6, 12 6 C16 6, 20 8, 22 12" stroke="currentColor" strokeWidth="1.5" />
-              <circle cx="17" cy="12" r="1.5" fill="currentColor" />
-            </svg>
-          </div>
-          <span
-            className="text-white group-hover:text-cyan-400 transition-colors"
-            style={{ fontFamily: "Orbitron, sans-serif", fontWeight: 700, fontSize: "0.9rem", letterSpacing: "0.05em" }}
-          >
-            SUBJU<span style={{ color: "#00d4ff" }}>GATOR</span>
-          </span>
+        <Link to="/" className="group shrink-0">
+          <img
+            src={footerBrandImage}
+            alt="SubjuGator"
+            className="h-8 w-auto opacity-90 group-hover:opacity-100 transition-opacity"
+          />
         </Link>
 
         {/* Nav links */}

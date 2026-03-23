@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink, Link, useLocation } from "react-router";
 import { Menu, X } from "lucide-react";
+import subjugatorLogo from "../media/subjugator_logo.png";
 
 const navLinks = [
   { label: "About", to: "/about" },
@@ -37,7 +38,7 @@ export function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center group">
           <img
-            src="http://subjugator.org/wp-content/uploads/2012/05/Subjugator-Logo2.png"
+            src={subjugatorLogo}
             alt="SubjuGator"
             className="h-8 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity"
           />
