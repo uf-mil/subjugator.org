@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const FOUNDING_YEAR = 1997;
 const CURRENT_YEAR = 2026;
@@ -28,7 +29,7 @@ type YearData = {
   disciplines: Discipline[];
 };
 
-const YEAR_DATA: Partial<Record<number, YearData>> = {
+export const YEAR_DATA: Partial<Record<number, YearData>> = {
   2026: {
     image:
       "https://images.unsplash.com/photo-1635246550194-11af93a2763f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmdpbmVlcmluZyUyMHJvYm90aWNzJTIwdGVhbSUyMHVuaXZlcnNpdHklMjBzdHVkZW50c3xlbnwxfHx8fDE3NzI4Mjk3NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
@@ -73,6 +74,7 @@ const YEAR_DATA: Partial<Record<number, YearData>> = {
 
 export function Team() {
   const [selectedYear, setSelectedYear] = useState<number>(CURRENT_YEAR);
+  const navigate = useNavigate();
 
   const data = YEAR_DATA[selectedYear];
 
@@ -90,17 +92,27 @@ export function Team() {
           </span>
         </div>
 
-        <h2
-          className="text-white mb-4"
-          style={{
-            fontFamily: "Orbitron, sans-serif",
-            fontWeight: 700,
-            fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
-            lineHeight: 1.2,
-          }}
-        >
-          The Crew
-        </h2>
+        <div className="flex justify-between items-center mb-4">
+          <h2
+            className="text-white"
+            style={{
+              fontFamily: "Orbitron, sans-serif",
+              fontWeight: 700,
+              fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
+              lineHeight: 1.2,
+            }}
+          >
+            The Crew
+          </h2>
+
+          <button
+            onClick={() => navigate("/members")}
+            className="text-cyan-400 border border-cyan-400 px-4 py-2 rounded-lg hover:bg-cyan-400 hover:text-black transition"
+            style={{ fontFamily: "Orbitron, sans-serif" }}
+          >
+            View All Members
+          </button>
+        </div>
         <p
           className="text-gray-400 max-w-xl mb-8"
           style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.8 }}
@@ -173,7 +185,10 @@ export function Team() {
               {data.members.map((member) => (
                 <div
                   key={member.name}
-                  className="p-5 rounded-xl border border-cyan-900/30 bg-[#030d1a] hover:border-cyan-400/25 transition-all hover:-translate-y-0.5"
+                  onClick={() =>
+                    navigate(`/members/${member.name.toLowerCase().replace(/\s+/g, "-")}`)
+                  }
+                  className="p-5 rounded-xl border border-cyan-900/30 bg-[#030d1a] hover:border-cyan-400/25 transition-all hover:-translate-y-0.5 cursor-pointer"
                 >
                   {/* Avatar */}
                   <div
@@ -259,4 +274,33 @@ export function Team() {
       </div>
     </section>
   );
+}
+
+export function getAllMembers(YEAR_DATA: Record<number, YearData>) {
+  const map = new Map<string, any>();
+
+  Object.entries(YEAR_DATA).forEach(([yearStr, data]) => {
+    const year = Number(yearStr);
+    if (!data) return;
+
+    data.members.forEach((m) => {
+      if (!map.has(m.name)) {
+        map.set(m.name, {
+          id: m.name.toLowerCase().replace(/\s+/g, "-"),
+          name: m.name,
+          initials: m.initials,
+          color: m.color,
+          history: [],
+        });
+      }
+
+      map.get(m.name).history.push({
+        year,
+        role: m.role,
+        sub: m.sub,
+      });
+    });
+  });
+
+  return Array.from(map.values());
 }
