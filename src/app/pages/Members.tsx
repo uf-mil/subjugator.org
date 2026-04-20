@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { YEAR_DATA, getAllMembers } from "./Team";
+import { getAllMembers } from "./Team";
+import { YEAR_DATA } from "../data/TeamData";
 
 export function Members() {
   const [search, setSearch] = useState("");
@@ -43,7 +44,11 @@ export function Members() {
                   color: m.color,
                 }}
               >
-                {m.initials}
+                {m.image ? (
+                  <img src={m.image} alt={m.name} className="w-full h-full rounded-full object-cover" />
+                ) : (
+                  m.initials
+                )}
               </div>
 
               <p className="text-white text-sm">{m.name}</p>

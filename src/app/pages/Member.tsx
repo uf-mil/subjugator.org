@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router";
-import { YEAR_DATA, getAllMembers } from "./Team";
+import { getAllMembers } from "./Team";
+import { YEAR_DATA } from "../data/TeamData";
 import { useEffect } from "react";
 
 export function MemberPage() {
@@ -23,15 +24,19 @@ export function MemberPage() {
           ← Back
         </button>
 
-        <div className="flex items-center gap-4 mb-8">
+        <div className="flex items-center gap-6 mb-8">
           <div
-            className="w-16 h-16 rounded-full flex items-center justify-center text-xl"
+            className="w-32 h-32 rounded-xl flex items-center justify-center text-3xl shrink-0"
             style={{
               background: `${member.color}15`,
               color: member.color,
             }}
           >
-            {member.initials}
+            {member.image ? (
+              <img src={member.image} alt={member.name} className="w-full h-full rounded-xl object-cover" />
+            ) : (
+              member.initials
+            )}
           </div>
 
           <h1 className="text-white text-3xl">{member.name}</h1>
