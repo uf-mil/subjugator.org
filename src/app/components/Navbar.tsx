@@ -9,6 +9,7 @@ const navLinks = [
   { label: "Vehicle", to: "/vehicle" },
   { label: "Competitions", to: "/competitions" },
   { label: "Team", to: "/team" },
+  { label: "Sponsors", to: "/sponsors" },
   { label: "Contact", to: "/contact" },
 ];
 

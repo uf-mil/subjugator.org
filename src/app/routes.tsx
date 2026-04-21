@@ -10,6 +10,8 @@ import { Team } from "./pages/Team";
 import { Contact } from "./pages/Contact";
 import { Members } from "./pages/Members";
 import { MemberPage } from "./pages/Member";
+import SponsorsPage from "./pages/SponsorsPage";
+import { SponsorYearPage } from "./pages/SponsorYearPage";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +28,8 @@ export const router = createBrowserRouter([
       { path: "team", Component: Team },
       { path: "members", Component: Members },
       { path: "members/:id", Component: MemberPage },
+      { path: "sponsors", Component: SponsorsPage },
+      { path: "sponsors/:year", Component: SponsorYearPage },
       { path: "contact", Component: Contact },
     ],
   },
