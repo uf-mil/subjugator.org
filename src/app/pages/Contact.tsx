@@ -1,32 +1,84 @@
-import { useState } from "react";
-import { Github, Mail, Twitter, Youtube, Send, MapPin, Users } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Github, Mail, Twitter, Youtube, Send, MapPin, Users, Instagram, MessageSquare } from "lucide-react";
 import { Link } from "react-router";
+import { FaDiscord } from "react-icons/fa";
 
 export function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", role: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", subject: "", role: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Animation Refs
+  const heroRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const contactInfoRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Entry animations sequence
+    const sequence = [
+      { ref: titleRef, delay: 300 },
+      { ref: subtitleRef, delay: 500 },
+      { ref: contactInfoRef, delay: 800 },
+      { ref: formRef, delay: 1000 },
+      { ref: heroRef, delay: 100 },
+    ];
+
+    sequence.forEach(({ ref, delay }) => {
+      setTimeout(() => {
+        if (ref.current) {
+          ref.current.classList.add("opacity-100", "translate-y-0");
+          ref.current.classList.remove("opacity-0", "translate-y-4");
+        }
+      }, delay);
+    });
+
+    // Parallax Effect
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (heroRef.current) {
+        heroRef.current.style.transform = `translateY(${scrollY * 0.3}px)`;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
     setSubmitted(true);
+    setIsSubmitting(false);
   };
 
   return (
-    <section className="bg-[#030d1a] pt-28 pb-24 px-6 min-h-screen">
-      <div className="max-w-6xl mx-auto">
+    <section className="bg-[#030d1a] pt-28 pb-10 px-6 min-h-screen relative overflow-hidden">
+      {/* Parallax Background Glow */}
+      <div 
+        ref={heroRef}
+        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-5 pointer-events-none transition-opacity duration-1000 opacity-0"
+        style={{ background: "radial-gradient(circle, #00d4ff, transparent 70%)" }}
+      />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Label */}
         <div className="flex items-center gap-3 mb-4">
           <div className="h-px w-10 bg-cyan-400" />
           <span
-            className="text-cyan-400 text-xs tracking-widest uppercase"
+            className="text-cyan-400 text-xs tracking-widest uppercase transition-all duration-700"
             style={{ fontFamily: "Orbitron, sans-serif" }}
           >
             Contact
           </span>
         </div>
 
-        <h2
-          className="text-white mb-4"
+        <h1
+          ref={titleRef}
+          className="text-white mb-4 opacity-0 translate-y-4 transition-all duration-700"
           style={{
             fontFamily: "Orbitron, sans-serif",
             fontWeight: 700,
@@ -35,9 +87,10 @@ export function Contact() {
           }}
         >
           Get in Touch
-        </h2>
+        </h1>
         <p
-          className="text-gray-400 max-w-xl mb-14"
+          ref={subtitleRef}
+          className="text-gray-400 max-w-xl mb-14 opacity-0 translate-y-4 transition-all duration-700"
           style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.8 }}
         >
           Interested in joining our team, collaborating, or sponsoring SubjuGator? We'd love to hear from you.
@@ -46,10 +99,13 @@ export function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Left: Form */}
-          <div className="rounded-2xl border border-cyan-900/30 bg-[#061525] p-8">
+          <div 
+            ref={formRef}
+            className="rounded-2xl border border-cyan-900/30 bg-[#061525] p-8 opacity-0 translate-y-4 transition-all duration-700"
+          >
             {submitted ? (
               <div className="flex flex-col items-center justify-center h-64 text-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-cyan-400/15 border border-cyan-400/30 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-full bg-cyan-400/15 border border-cyan-400/30 flex items-center justify-center animate-bounce">
                   <Send size={22} className="text-cyan-400" />
                 </div>
                 <h3
@@ -62,7 +118,7 @@ export function Contact() {
                   Thanks for reaching out. We'll get back to you within a couple of days.
                 </p>
                 <button
-                  onClick={() => { setSubmitted(false); setForm({ name: "", email: "", role: "", message: "" }); }}
+                  onClick={() => { setSubmitted(false); setForm({ name: "", email: "", subject: "", role: "", message: "" }); }}
                   className="mt-2 text-cyan-400 text-xs underline underline-offset-4"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
@@ -83,7 +139,7 @@ export function Contact() {
                     type="text"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    placeholder="Jane Smith"
+                    placeholder="Enter name"
                     className="w-full bg-[#030d1a] border border-cyan-900/40 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-cyan-400/50 transition-colors placeholder-gray-700"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   />
@@ -100,7 +156,24 @@ export function Contact() {
                     type="email"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    placeholder="jane@university.edu"
+                    placeholder="Enter email"
+                    className="w-full bg-[#030d1a] border border-cyan-900/40 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-cyan-400/50 transition-colors placeholder-gray-700"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  />
+                </div>
+                <div>
+                  <label
+                    className="block text-gray-400 text-xs uppercase tracking-widest mb-2"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  >
+                    Subject
+                  </label>
+                  <input
+                    required
+                    type="text"
+                    value={form.subject}
+                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                    placeholder="Enter subject"
                     className="w-full bg-[#030d1a] border border-cyan-900/40 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-cyan-400/50 transition-colors placeholder-gray-700"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   />
@@ -146,7 +219,8 @@ export function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-lg flex items-center justify-center gap-2 text-sm tracking-wider transition-all hover:scale-[1.02]"
+                  disabled={isSubmitting}
+                  className="w-full py-3 rounded-lg flex items-center justify-center gap-2 text-sm tracking-wider transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{
                     fontFamily: "Orbitron, sans-serif",
                     fontWeight: 600,
@@ -155,15 +229,27 @@ export function Contact() {
                     boxShadow: "0 0 20px rgba(0, 212, 255, 0.3)",
                   }}
                 >
-                  <Send size={15} />
-                  Send Message
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <div className="w-4 h-4 border-2 border-[#030d1a]/30 border-t-[#030d1a] rounded-full animate-spin" />
+                      Sending...
+                    </span>
+                  ) : (
+                    <>
+                      <Send size={15} />
+                      Send Message
+                    </>
+                  )}
                 </button>
               </form>
             )}
           </div>
 
           {/* Right: Info */}
-          <div className="flex flex-col gap-6">
+          <div 
+            ref={contactInfoRef}
+            className="flex flex-col gap-6 opacity-0 translate-y-4 transition-all duration-700"
+          >
             {/* Why join */}
             <div className="rounded-2xl border border-cyan-900/30 bg-[#061525] p-6">
               <div className="flex items-center gap-2 mb-4">
@@ -203,13 +289,16 @@ export function Contact() {
                 </h3>
               </div>
               <p className="text-gray-400 text-sm" style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.7 }}>
-                Mechanical & Aerospace Engineering Building<br />
-                Room 112 — AUV Lab<br />
-                State University Campus
+                Machine Intelligence Laboratory<br />
+                1889 Museum Road Room 3001<br />
+                Gainesville, FL 32611
               </p>
-              <p className="text-gray-500 text-xs mt-3" style={{ fontFamily: "Inter, sans-serif" }}>
-                Team meetings every Tuesday & Thursday, 6–8 PM
-              </p>
+              <div className="mt-4 pt-4 border-t border-cyan-900/20">
+                <p className="text-white text-xs font-semibold uppercase tracking-wider mb-1" style={{ fontFamily: "Orbitron, sans-serif" }}>
+                  Faculty Advisor
+                </p>
+                <p className="text-gray-400 text-sm" style={{ fontFamily: "Inter, sans-serif" }}>Prof. Eric M. Schwartz, MIL Director</p>
+              </div>
             </div>
 
             {/* Social + Email */}
@@ -222,10 +311,12 @@ export function Contact() {
               </h3>
               <div className="flex gap-3 mb-4">
                 {[
-                  { icon: <Github size={18} />, label: "GitHub", href: "https://github.com" },
-                  { icon: <Twitter size={18} />, label: "Twitter", href: "https://twitter.com" },
-                  { icon: <Youtube size={18} />, label: "YouTube", href: "https://youtube.com" },
-                  { icon: <Mail size={18} />, label: "Email", href: "mailto:subjugator@university.edu" },
+                  { icon: <Github size={18} />, label: "GitHub", href: "https://github.com/uf-mil" },
+                  { icon: <Twitter size={18} />, label: "Twitter", href: "https://x.com/SubjuGatorUF" },
+                  { icon: <Instagram size={18} />, label: "Instagram", href: "https://www.instagram.com/ufmil" },
+                  { icon: <Youtube size={18} />, label: "YouTube", href: "https://www.youtube.com/@SubjuGatorUF" },
+                  { icon: <FaDiscord size={18} />, label: "Discord", href: "https://discord.com/invite/Pw3NmhCF6U" },
+                  { icon: <Mail size={18} />, label: "Email", href: "mailto:subjugatoruf@gmail.com" },
                 ].map((social) => (
                   <a
                     key={social.label}
@@ -239,11 +330,30 @@ export function Contact() {
                   </a>
                 ))}
               </div>
-              <p className="text-gray-500 text-xs" style={{ fontFamily: "Inter, sans-serif" }}>
-                subjugator@university.edu
-              </p>
+              <div className="space-y-1">
+                <p className="text-gray-500 text-xs" style={{ fontFamily: "Inter, sans-serif" }}>
+                  subjugatoruf@gmail.com
+                </p>
+                <p className="text-gray-500 text-xs" style={{ fontFamily: "Inter, sans-serif" }}>
+                  ems@ufl.edu
+                </p>
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Map Section */}
+        <div className="mt-16 rounded-2xl border border-cyan-900/30 bg-[#061525] overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.61431649733!2d-82.35033642383617!3d29.64394313743414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e8a3002730df97%3A0x5ad3f106749ff928!2sMalachowsky%20Hall%20for%20Data%20Science%20and%20Information%20Technology!5e0!3m2!1sen!2sus!4v1776705783412!5m2!1sen!2sus"
+            width="100%"
+            height="400"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="MIL Location Map"
+          />
         </div>
       </div>
     </section>

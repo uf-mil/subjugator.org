@@ -1,37 +1,59 @@
-import { Cpu, Eye, Zap, Compass } from "lucide-react";
+import { useState } from "react";
+import { 
+  Target, 
+  History, 
+  Users, 
+  GraduationCap, 
+  Trophy,
+  Code,
+  Zap,
+  Settings
+} from "lucide-react";
 
-const pillars = [
+const tabs = [
+  { id: 'mission', label: 'Our Mission', icon: <Target size={18} /> },
+  { id: 'history', label: 'Our Journey', icon: <History size={18} /> },
+  { id: 'departments', label: 'Departments', icon: <Settings size={18} /> },
+  { id: 'advisors', label: 'Leadership', icon: <GraduationCap size={18} /> },
+  { id: 'achievements', label: 'Recognition', icon: <Trophy size={18} /> },
+];
+
+const timeline = [
+  { year: "1997", title: "Team Formation", description: "SubjuGator established at the UF Machine Intelligence Laboratory." },
+  { year: "2005", title: "First Win", description: "Earned 1st place at AUVSI RoboSub with SubjuGator 3." },
+  { year: "2012", title: "Evolution", description: "Transitioned to ROS architecture, revolutionizing the software stack." },
+  { year: "2019", title: "Advanced AI", description: "Implemented deep learning-based object detection and acoustic localization." },
+  { year: "2025", title: "SubjuGator 9", description: "Developing next-gen adaptive control systems and enhanced autonomy." },
+];
+
+const departments = [
   {
-    icon: <Cpu size={22} className="text-cyan-400" />,
-    title: "Autonomy",
-    description:
-      "Fully autonomous navigation and decision-making — no remote control, no human intervention during competition runs.",
+    name: "Mechanical",
+    icon: <Settings size={20} className="text-orange-500" />,
+    description: "Responsible for vehicle design, hull fabrication, thruster integration, and pressure testing. Works with CAD software and advanced manufacturing techniques.",
+    skills: ["SolidWorks & CAD Design", "CNC Machining", "3D Printing & Prototyping", "Waterproofing & Pressure Testing"]
   },
   {
-    icon: <Eye size={22} className="text-cyan-400" />,
-    title: "Computer Vision",
-    description:
-      "Advanced object detection and classification pipelines allow SubjuGator to identify gates, buoys, torpedoes, and more.",
+    name: "Electrical",
+    icon: <Zap size={20} className="text-cyan-400" />,
+    description: "Handles power distribution, sensor integration, custom PCB design, and embedded systems. Ensures reliable operation in underwater environments.",
+    skills: ["PCB Design & Fabrication", "Embedded Systems Programming", "Power Management", "Sensor Interfacing & Integration"]
   },
   {
-    icon: <Zap size={22} className="text-cyan-400" />,
-    title: "Real-Time Control",
-    description:
-      "Eight thrusters driven by low-latency control loops maintain precise 6-DOF position and attitude underwater.",
-  },
-  {
-    icon: <Compass size={22} className="text-cyan-400" />,
-    title: "Navigation",
-    description:
-      "Sensor fusion from DVL, IMU, and depth sensors provides accurate state estimation even in murky conditions.",
+    name: "Software",
+    icon: <Code size={20} className="text-purple-400" />,
+    description: "Develops navigation algorithms, computer vision systems, controls, and autonomous decision-making capabilities using ROS architecture.",
+    skills: ["ROS Development", "State Estimation & Control", "Computer Vision & Deep Learning", "Simulation & Testing"]
   },
 ];
 
 export function About() {
+  const [activeTab, setActiveTab] = useState('mission');
+
   return (
-    <section id="about" className="bg-[#030d1a] pt-28 pb-24 px-6 min-h-screen">
+    <section id="about" className="bg-[#061525] pt-28 pb-24 px-6 min-h-screen">
       <div className="max-w-6xl mx-auto">
-        {/* Section Label */}
+        {/* Header */}
         <div className="flex items-center gap-3 mb-4">
           <div className="h-px w-10 bg-cyan-400" />
           <span
@@ -42,83 +64,185 @@ export function About() {
           </span>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Left: text */}
-          <div>
-            <h2
-              className="text-white mb-6"
-              style={{
-                fontFamily: "Orbitron, sans-serif",
-                fontWeight: 700,
-                fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
-                lineHeight: 1.2,
-              }}
-            >
-              Built to dominate the deep
-            </h2>
-            <p
-              className="text-gray-400 mb-4"
-              style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.8 }}
-            >
-              SubjuGator is our team's fully autonomous underwater vehicle (AUV), engineered from the ground up
-              by students to compete in the annual <span className="text-cyan-300">AUVSI RoboSub Championship</span> —
-              one of the most prestigious underwater robotics competitions in the world.
-            </p>
-            <p
-              className="text-gray-400"
-              style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.8 }}
-            >
-              Every year we design, build, and program a new generation of SubjuGator. Our interdisciplinary team
-              spans mechanical engineering, electrical engineering, and computer science — all working toward a single
-              mission: outmaneuver every obstacle the course throws at us.
-            </p>
+        <h1 className="font-orbitron text-4xl md:text-5xl text-white mb-12">
+          SubjuGator <span className="text-cyan-400">UF</span>
+        </h1>
 
-            {/* Stats row */}
-            <div className="mt-8 grid grid-cols-3 gap-6">
-              {[
-                { value: "10+", label: "Years Competing" },
-                { value: "30+", label: "Team Members" },
-                { value: "Top 5", label: "Global Ranking" },
-              ].map((stat) => (
-                <div key={stat.label} className="border border-cyan-900/50 rounded-lg p-4 bg-cyan-900/5">
-                  <div
-                    className="text-cyan-400 mb-1"
-                    style={{ fontFamily: "Orbitron, sans-serif", fontWeight: 700, fontSize: "1.6rem" }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div
-                    className="text-gray-500 text-xs uppercase tracking-wider"
-                    style={{ fontFamily: "Inter, sans-serif" }}
-                  >
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
+        {/* Featured Team Photo */}
+        <div className="mb-16 relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+          <div className="relative rounded-2xl overflow-hidden border border-cyan-900/30 bg-[#030d1a] p-2 shadow-2xl">
+            <img
+              src="/images/team-photo.jpg"
+              alt="SubjuGator Team"
+              className="w-full h-auto md:max-h-[500px] object-cover rounded-xl transition-transform duration-700 group-hover:scale-[1.01]"
+            />
+            <div className="absolute bottom-6 left-6 flex items-center gap-3 bg-[#030d1a]/80 backdrop-blur-md px-4 py-2 rounded-lg border border-cyan-400/20">
+              <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+              <span className="text-cyan-300 font-orbitron text-[10px] tracking-[0.2em] uppercase">
+                SubjuGator Crew
+              </span>
             </div>
           </div>
+        </div>
 
-          {/* Right: pillars */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {pillars.map((p) => (
-              <div
-                key={p.title}
-                className="p-5 rounded-xl border border-cyan-900/40 bg-[#061525] hover:border-cyan-400/30 transition-colors"
+        <div className="flex flex-col md:flex-row gap-12 items-start">
+          {/* Side Navigation */}
+          <div className="w-full md:w-64 shrink-0 flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-4 md:pb-0 no-scrollbar">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-3 px-6 py-4 rounded-xl font-orbitron text-xs tracking-widest uppercase transition-all border whitespace-nowrap ${
+                  activeTab === tab.id 
+                    ? 'bg-cyan-400 text-[#030d1a] border-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.2)]' 
+                    : 'bg-white/5 text-gray-400 border-white/10 hover:border-cyan-400/30'
+                }`}
               >
-                <div className="w-9 h-9 rounded-lg bg-cyan-400/10 flex items-center justify-center mb-3">
-                  {p.icon}
+                {tab.icon}
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Content Area */}
+          <div className="flex-1 bg-[#030d1a] border border-cyan-900/20 rounded-3xl p-8 md:p-12 shadow-2xl relative min-h-[500px]">
+            {/* Tab: Mission */}
+            {activeTab === 'mission' && (
+              <div className="animate-fadeIn space-y-8">
+                <h2 className="font-orbitron text-2xl text-white">Innovation & Education</h2>
+                <p className="text-gray-400 font-inter leading-relaxed text-lg">
+                  SubjuGator is an autonomous underwater vehicle engineered from the ground up by students at the University of Florida. 
+                  Our mission focuses on advancing marine robotics through novel sensor fusion, adaptive control, and cross-disciplinary collaboration.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
+                    <h4 className="text-cyan-400 font-orbitron text-sm mb-3 uppercase">Research</h4>
+                    <p className="text-gray-500 text-sm">Pushing the boundaries of autonomous navigation and underwater perception using cutting-edge sensors.</p>
+                  </div>
+                  <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
+                    <h4 className="text-cyan-400 font-orbitron text-sm mb-3 uppercase">Excellence</h4>
+                    <p className="text-gray-500 text-sm">Representing UF at international competitions, maintaining a legacy as 7x RoboSub Champions.</p>
+                  </div>
                 </div>
-                <h3
-                  className="text-white mb-2"
-                  style={{ fontFamily: "Orbitron, sans-serif", fontWeight: 600, fontSize: "0.85rem" }}
-                >
-                  {p.title}
-                </h3>
-                <p className="text-gray-500 text-sm" style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.7 }}>
-                  {p.description}
+              </div>
+            )}
+
+            {/* Tab: History */}
+            {activeTab === 'history' && (
+              <div className="animate-fadeIn space-y-10">
+                <h2 className="font-orbitron text-2xl text-white">Project Timeline</h2>
+                <div className="relative border-l border-cyan-900/50 ml-4 space-y-12">
+                  {timeline.map((item, i) => (
+                    <div key={i} className="relative pl-10">
+                      <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />
+                      <span className="font-orbitron text-cyan-400 text-sm font-bold">{item.year}</span>
+                      <h3 className="text-white font-orbitron text-lg mt-1">{item.title}</h3>
+                      <p className="text-gray-500 text-sm font-inter mt-2">{item.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Tab: Departments */}
+            {activeTab === 'departments' && (
+              <div className="animate-fadeIn space-y-8">
+                <h2 className="font-orbitron text-2xl text-white">Multidisciplinary Crew</h2>
+                <div className="space-y-4">
+                  {departments.map((dept, i) => (
+                    <div key={i} className="group p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-cyan-400/20 transition-all flex flex-col sm:flex-row sm:items-center gap-6">
+                      <div className="w-12 h-12 rounded-xl bg-[#061525] flex items-center justify-center shrink-0 border border-white/10 group-hover:scale-110 transition-transform">
+                        {dept.icon}
+                      </div>
+                      <div className="flex-1 text-left">
+                        <h3 className="text-white font-orbitron text-lg mb-2">{dept.name}</h3>
+                        <p className="text-gray-500 text-sm font-inter mb-4 leading-relaxed">{dept.description}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {dept.skills.map(skill => (
+                            <span key={skill} className="px-3 py-1 rounded-full bg-cyan-400/10 text-cyan-400 text-[10px] font-orbitron tracking-widest uppercase">
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Tab: Advisors */}
+            {activeTab === 'advisors' && (
+              <div className="animate-fadeIn space-y-8">
+                <h2 className="font-orbitron text-2xl text-white">Expert Guidance</h2>
+                <div className="grid sm:grid-cols-2 gap-8">
+                  <div className="p-8 rounded-3xl bg-[#061525] border border-white/5 shadow-inner">
+                    <h3 className="text-white font-orbitron text-xl mb-1">Dr. Eric M. Schwartz</h3>
+                    <p className="text-cyan-400 text-xs font-orbitron uppercase tracking-widest mb-6">Director, Machine Intelligence Lab</p>
+                    <div className="space-y-4 border-t border-white/5 pt-6">
+                      <p className="text-gray-500 text-sm font-inter">Expertise: Embedded Systems, Robotics Education, Digital Design.</p>
+                    </div>
+                  </div>
+                  <div className="p-8 rounded-3xl bg-[#061525] border border-white/5 shadow-inner">
+                    <h3 className="text-white font-orbitron text-xl mb-1">Dr. Carl Crane</h3>
+                    <p className="text-cyan-400 text-xs font-orbitron uppercase tracking-widest mb-6">Professor, Mechanical & Aerospace Engineering</p>
+                    <div className="space-y-4 border-t border-white/5 pt-6">
+                      <p className="text-gray-500 text-sm font-inter">Expertise: Autonomous Systems, Vehicle Robotics, Navigation Technology.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Tab: Achievements */}
+            {activeTab === 'achievements' && (
+              <div className="animate-fadeIn space-y-8">
+                <h2 className="font-orbitron text-2xl text-white">Legacy of Excellence</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  <div className="text-center p-8 rounded-2xl bg-white/5 border border-white/5">
+                    <div className="text-4xl font-orbitron text-cyan-400 mb-2">7x</div>
+                    <p className="text-gray-400 text-xs font-orbitron uppercase tracking-tighter">RoboSub Champions</p>
+                  </div>
+                  <div className="text-center p-8 rounded-2xl bg-white/5 border border-white/5">
+                    <div className="text-4xl font-orbitron text-cyan-400 mb-2">20+</div>
+                    <p className="text-gray-400 text-xs font-orbitron uppercase tracking-tighter">Research Papers</p>
+                  </div>
+                  <div className="text-center p-8 rounded-2xl bg-white/5 border border-white/5">
+                    <div className="text-4xl font-orbitron text-cyan-400 mb-2">30+</div>
+                    <p className="text-gray-400 text-xs font-orbitron uppercase tracking-tighter">Active Members</p>
+                  </div>
+                </div>
+                <p className="text-gray-500 text-center font-inter italic">
+                  Recognized globally for innovation and technical merit in autonomous systems.
                 </p>
               </div>
-            ))}
+            )}
+          </div>
+        </div>
+
+        {/* Join CTA */}
+        <div className="mt-20 relative overflow-hidden rounded-[40px] border border-cyan-400/20 bg-gradient-to-br from-[#061525] to-[#030d1a] p-12 text-center group">
+          <div className="absolute inset-0 bg-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+          <div className="relative z-10">
+            <h2 className="font-orbitron text-3xl text-white mb-4">Join the Next Generation</h2>
+            <p className="text-gray-400 font-inter max-w-xl mx-auto mb-10 leading-relaxed">
+              We are always looking for passionate students from all backgrounds. No prior experience is required — only curiosity and the drive to innovate.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="/contact"
+                className="px-10 py-4 rounded-xl bg-cyan-400 text-[#030d1a] font-orbitron font-bold text-sm tracking-widest uppercase transition-all hover:scale-105"
+              >
+                Apply Now
+              </a>
+              <a 
+                href="mailto:subjugator@ufl.edu"
+                className="px-10 py-4 rounded-xl border border-white/10 text-white font-orbitron text-sm tracking-widest uppercase hover:bg-white/5 transition-all"
+              >
+                Email Inquiries
+              </a>
+            </div>
           </div>
         </div>
       </div>

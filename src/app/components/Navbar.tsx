@@ -5,9 +5,11 @@ import subjugatorLogo from "../media/subjugator_logo.png";
 
 const navLinks = [
   { label: "About", to: "/about" },
+  { label: "Blog", to: "/blog" },
   { label: "Vehicle", to: "/vehicle" },
   { label: "Competitions", to: "/competitions" },
   { label: "Team", to: "/team" },
+  { label: "Sponsors", to: "/sponsors" },
   { label: "Contact", to: "/contact" },
 ];
 
