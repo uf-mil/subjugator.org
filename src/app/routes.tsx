@@ -2,10 +2,16 @@ import { createBrowserRouter } from "react-router";
 import { Layout } from "./components/Layout";
 import { Hero } from "./pages/Hero";
 import { About } from "./pages/About";
+import { Blog } from "./pages/Blog";
+import { BlogYear } from "./pages/BlogYear";
 import { Vehicle } from "./pages/Vehicle";
 import { Competitions } from "./pages/Competitions";
 import { Team } from "./pages/Team";
 import { Contact } from "./pages/Contact";
+import { Members } from "./pages/Members";
+import { MemberPage } from "./pages/Member";
+import SponsorsPage from "./pages/SponsorsPage";
+import { SponsorYearPage } from "./pages/SponsorYearPage";
 
 export const router = createBrowserRouter([
   {
@@ -14,9 +20,16 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: Hero },
       { path: "about", Component: About },
+      { path: "blog", Component: Blog },
+      { path: "blog/:year", Component: BlogYear },
+      { path: "blog/:year/:id", Component: BlogYear },
       { path: "vehicle", Component: Vehicle },
       { path: "competitions", Component: Competitions },
       { path: "team", Component: Team },
+      { path: "members", Component: Members },
+      { path: "members/:id", Component: MemberPage },
+      { path: "sponsors", Component: SponsorsPage },
+      { path: "sponsors/:year", Component: SponsorYearPage },
       { path: "contact", Component: Contact },
     ],
   },

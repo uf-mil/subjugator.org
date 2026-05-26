@@ -1,78 +1,17 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
+import { YEAR_DATA, YearData } from "../data/TeamData";
 
-const FOUNDING_YEAR = 1997;
-const CURRENT_YEAR = 2026;
+const FOUNDING_YEAR = 1996;
+const CURRENT_YEAR = 2025;
 const ALL_YEARS = Array.from(
   { length: CURRENT_YEAR - FOUNDING_YEAR + 1 },
   (_, i) => CURRENT_YEAR - i
 );
 
-type TeamMember = {
-  name: string;
-  role: string;
-  sub: string;
-  initials: string;
-  color: string;
-};
-
-type Discipline = {
-  label: string;
-  count: string;
-  color: string;
-};
-
-type YearData = {
-  image: string;
-  caption: string;
-  members: TeamMember[];
-  disciplines: Discipline[];
-};
-
-const YEAR_DATA: Partial<Record<number, YearData>> = {
-  2026: {
-    image:
-      "https://images.unsplash.com/photo-1635246550194-11af93a2763f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmdpbmVlcmluZyUyMHJvYm90aWNzJTIwdGVhbSUyMHVuaXZlcnNpdHklMjBzdHVkZW50c3xlbnwxfHx8fDE3NzI4Mjk3NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    caption: "SubjuGator Team · Spring 2026",
-    members: [
-      { name: "Alex Chen", role: "Team Lead", sub: "Mechanical Engineering, Senior", initials: "AC", color: "#00d4ff" },
-      { name: "Maria Rodriguez", role: "Software Lead", sub: "Computer Science, Junior", initials: "MR", color: "#4ade80" },
-      { name: "James Park", role: "Hardware Lead", sub: "Electrical Engineering, Senior", initials: "JP", color: "#a78bfa" },
-      { name: "Priya Patel", role: "Mechanical Lead", sub: "Mechanical Engineering, Junior", initials: "PP", color: "#f472b6" },
-      { name: "Tyler Johnson", role: "Computer Vision", sub: "Computer Science, Sophomore", initials: "TJ", color: "#fb923c" },
-      { name: "Sophie Williams", role: "Electrical", sub: "Electrical Engineering, Junior", initials: "SW", color: "#facc15" },
-      { name: "Daniel Kim", role: "Controls", sub: "Mechanical Engineering, Senior", initials: "DK", color: "#00d4ff" },
-      { name: "Aisha Thompson", role: "Systems Integration", sub: "Computer Engineering, Junior", initials: "AT", color: "#4ade80" },
-    ],
-    disciplines: [
-      { label: "Mechanical", count: "8 members", color: "#00d4ff" },
-      { label: "Electrical", count: "7 members", color: "#facc15" },
-      { label: "Software", count: "10 members", color: "#4ade80" },
-      { label: "Operations", count: "5 members", color: "#a78bfa" },
-    ],
-  },
-  2025: {
-    image:
-      "https://images.unsplash.com/photo-1635246550194-11af93a2763f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmdpbmVlcmluZyUyMHJvYm90aWNzJTIwdGVhbSUyMHVuaXZlcnNpdHklMjBzdHVkZW50c3xlbnwxfHx8fDE3NzI4Mjk3NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    caption: "SubjuGator Team · Fall 2025",
-    members: [
-      { name: "Jordan Lee", role: "Team Lead", sub: "Mechanical Engineering, Senior", initials: "JL", color: "#00d4ff" },
-      { name: "Sam Nguyen", role: "Software Lead", sub: "Computer Science, Senior", initials: "SN", color: "#4ade80" },
-      { name: "Casey Rivera", role: "Hardware Lead", sub: "Electrical Engineering, Junior", initials: "CR", color: "#a78bfa" },
-      { name: "Morgan Davis", role: "Mechanical Lead", sub: "Mechanical Engineering, Junior", initials: "MD", color: "#f472b6" },
-      { name: "Riley Turner", role: "Computer Vision", sub: "Computer Science, Junior", initials: "RT", color: "#fb923c" },
-      { name: "Quinn Pham", role: "Electrical", sub: "Electrical Engineering, Sophomore", initials: "QP", color: "#facc15" },
-    ],
-    disciplines: [
-      { label: "Mechanical", count: "7 members", color: "#00d4ff" },
-      { label: "Electrical", count: "6 members", color: "#facc15" },
-      { label: "Software", count: "9 members", color: "#4ade80" },
-      { label: "Operations", count: "4 members", color: "#a78bfa" },
-    ],
-  },
-};
-
 export function Team() {
   const [selectedYear, setSelectedYear] = useState<number>(CURRENT_YEAR);
+  const navigate = useNavigate();
 
   const data = YEAR_DATA[selectedYear];
 
@@ -90,17 +29,27 @@ export function Team() {
           </span>
         </div>
 
-        <h2
-          className="text-white mb-4"
-          style={{
-            fontFamily: "Orbitron, sans-serif",
-            fontWeight: 700,
-            fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
-            lineHeight: 1.2,
-          }}
-        >
-          The Crew
-        </h2>
+        <div className="flex justify-between items-center mb-4">
+          <h2
+            className="text-white"
+            style={{
+              fontFamily: "Orbitron, sans-serif",
+              fontWeight: 700,
+              fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
+              lineHeight: 1.2,
+            }}
+          >
+            The Crew
+          </h2>
+
+          <button
+            onClick={() => navigate("/members")}
+            className="text-cyan-400 border border-cyan-400 px-4 py-2 rounded-lg hover:bg-cyan-400 hover:text-black transition"
+            style={{ fontFamily: "Orbitron, sans-serif" }}
+          >
+            View All Members
+          </button>
+        </div>
         <p
           className="text-gray-400 max-w-xl mb-8"
           style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.8 }}
@@ -173,7 +122,10 @@ export function Team() {
               {data.members.map((member) => (
                 <div
                   key={member.name}
-                  className="p-5 rounded-xl border border-cyan-900/30 bg-[#030d1a] hover:border-cyan-400/25 transition-all hover:-translate-y-0.5"
+                  onClick={() =>
+                    navigate(`/members/${member.name.toLowerCase().replace(/\s+/g, "-")}`)
+                  }
+                  className="p-5 rounded-xl border border-cyan-900/30 bg-[#030d1a] hover:border-cyan-400/25 transition-all hover:-translate-y-0.5 cursor-pointer"
                 >
                   {/* Avatar */}
                   <div
@@ -186,7 +138,11 @@ export function Team() {
                       border: `1px solid ${member.color}30`,
                     }}
                   >
-                    {member.initials}
+                  {member.image ? (
+                    <img src={member.image} alt={member.name} className="w-full h-full rounded-full object-cover" />
+                  ) : (
+                    member.initials
+                  )}
                   </div>
                   <p
                     className="text-white mb-1"
@@ -259,4 +215,34 @@ export function Team() {
       </div>
     </section>
   );
+}
+
+export function getAllMembers(YEAR_DATA: Partial<Record<number, YearData>>) {
+  const map = new Map<string, any>();
+
+  Object.entries(YEAR_DATA).forEach(([yearStr, data]) => {
+    const year = Number(yearStr);
+    if (!data) return;
+
+    data.members.forEach((m) => {
+      if (!map.has(m.name)) {
+        map.set(m.name, {
+          id: m.name.toLowerCase().replace(/\s+/g, "-"),
+          name: m.name,
+          initials: m.initials,
+          color: m.color,
+          image: m.image,
+          history: [],
+        });
+      }
+
+      map.get(m.name).history.push({
+        year,
+        role: m.role,
+        sub: m.sub,
+      });
+    });
+  });
+
+  return Array.from(map.values());
 }
