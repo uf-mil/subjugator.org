@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Github, Mail, Twitter, Youtube, Send, MapPin, Users, Instagram, MessageSquare } from "lucide-react";
-import { Link } from "react-router";
+import { Github, Youtube, Send, MapPin, Users, Instagram } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
 
 export function Contact() {
@@ -90,7 +89,7 @@ export function Contact() {
         </h1>
         <p
           ref={subtitleRef}
-          className="text-gray-400 max-w-xl mb-14 opacity-0 translate-y-4 transition-all duration-700"
+          className="text-gray-300 max-w-xl mb-14 opacity-0 translate-y-4 transition-all duration-700"
           style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.8 }}
         >
           Interested in joining our team, collaborating, or sponsoring SubjuGator? We'd love to hear from you.
@@ -114,7 +113,7 @@ export function Contact() {
                 >
                   Message Sent!
                 </h3>
-                <p className="text-gray-400 text-sm" style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.7 }}>
+                <p className="text-gray-300 text-sm" style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.7 }}>
                   Thanks for reaching out. We'll get back to you within a couple of days.
                 </p>
                 <button
@@ -129,7 +128,7 @@ export function Contact() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <label
-                    className="block text-gray-400 text-xs uppercase tracking-widest mb-2"
+                    className="block text-gray-300 text-xs uppercase tracking-widest mb-2"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Name
@@ -146,7 +145,7 @@ export function Contact() {
                 </div>
                 <div>
                   <label
-                    className="block text-gray-400 text-xs uppercase tracking-widest mb-2"
+                    className="block text-gray-300 text-xs uppercase tracking-widest mb-2"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Email
@@ -163,7 +162,7 @@ export function Contact() {
                 </div>
                 <div>
                   <label
-                    className="block text-gray-400 text-xs uppercase tracking-widest mb-2"
+                    className="block text-gray-300 text-xs uppercase tracking-widest mb-2"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Subject
@@ -180,7 +179,7 @@ export function Contact() {
                 </div>
                 <div>
                   <label
-                    className="block text-gray-400 text-xs uppercase tracking-widest mb-2"
+                    className="block text-gray-300 text-xs uppercase tracking-widest mb-2"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Interest / Role
@@ -202,7 +201,7 @@ export function Contact() {
                 </div>
                 <div>
                   <label
-                    className="block text-gray-400 text-xs uppercase tracking-widest mb-2"
+                    className="block text-gray-300 text-xs uppercase tracking-widest mb-2"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Message
@@ -269,7 +268,7 @@ export function Contact() {
                   "No prior robotics experience required — just curiosity",
                   "Build your portfolio with real engineering projects",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-gray-400 text-sm" style={{ fontFamily: "Inter, sans-serif" }}>
+                  <li key={item} className="flex items-start gap-2 text-gray-300 text-sm" style={{ fontFamily: "Inter, sans-serif" }}>
                     <span className="text-cyan-400 mt-1 shrink-0">▸</span>
                     {item}
                   </li>
@@ -288,7 +287,7 @@ export function Contact() {
                   Find Us
                 </h3>
               </div>
-              <p className="text-gray-400 text-sm" style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.7 }}>
+              <p className="text-gray-300 text-sm" style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.7 }}>
                 Machine Intelligence Laboratory<br />
                 1889 Museum Road Room 3001<br />
                 Gainesville, FL 32611
@@ -297,7 +296,7 @@ export function Contact() {
                 <p className="text-white text-xs font-semibold uppercase tracking-wider mb-1" style={{ fontFamily: "Orbitron, sans-serif" }}>
                   Faculty Advisor
                 </p>
-                <p className="text-gray-400 text-sm" style={{ fontFamily: "Inter, sans-serif" }}>Prof. Eric M. Schwartz, MIL Director</p>
+                <p className="text-gray-300 text-sm" style={{ fontFamily: "Inter, sans-serif" }}>Prof. Eric M. Schwartz, MIL Director</p>
               </div>
             </div>
 
@@ -312,11 +311,9 @@ export function Contact() {
               <div className="flex gap-3 mb-4">
                 {[
                   { icon: <Github size={18} />, label: "GitHub", href: "https://github.com/uf-mil" },
-                  { icon: <Twitter size={18} />, label: "Twitter", href: "https://x.com/SubjuGatorUF" },
                   { icon: <Instagram size={18} />, label: "Instagram", href: "https://www.instagram.com/ufmil" },
                   { icon: <Youtube size={18} />, label: "YouTube", href: "https://www.youtube.com/@SubjuGatorUF" },
                   { icon: <FaDiscord size={18} />, label: "Discord", href: "https://discord.com/invite/Pw3NmhCF6U" },
-                  { icon: <Mail size={18} />, label: "Email", href: "mailto:subjugatoruf@gmail.com" },
                 ].map((social) => (
                   <a
                     key={social.label}
@@ -324,19 +321,11 @@ export function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="w-10 h-10 rounded-lg border border-cyan-900/40 flex items-center justify-center text-gray-500 hover:text-cyan-400 hover:border-cyan-400/40 transition-all"
+                    className="w-10 h-10 rounded-lg border border-cyan-900/40 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/40 transition-all"
                   >
                     {social.icon}
                   </a>
                 ))}
-              </div>
-              <div className="space-y-1">
-                <p className="text-gray-500 text-xs" style={{ fontFamily: "Inter, sans-serif" }}>
-                  subjugatoruf@gmail.com
-                </p>
-                <p className="text-gray-500 text-xs" style={{ fontFamily: "Inter, sans-serif" }}>
-                  ems@ufl.edu
-                </p>
               </div>
             </div>
           </div>

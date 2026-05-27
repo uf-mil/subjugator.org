@@ -108,13 +108,6 @@ export function Hero() {
           >
             Explore the Sub
           </Link>
-          <Link
-            to="/competitions"
-            className="px-8 py-3 rounded border border-cyan-400/40 text-cyan-400 hover:bg-cyan-400/10 transition-all text-sm tracking-widest uppercase inline-block"
-            style={{ fontFamily: "Orbitron, sans-serif", fontWeight: 600 }}
-          >
-            Our Missions
-          </Link>
         </div>
       </div>
 

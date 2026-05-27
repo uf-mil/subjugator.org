@@ -5,7 +5,6 @@ import { About } from "./pages/About";
 import { Blog } from "./pages/Blog";
 import { BlogYear } from "./pages/BlogYear";
 import { Vehicle } from "./pages/Vehicle";
-import { Competitions } from "./pages/Competitions";
 import { Team } from "./pages/Team";
 import { Contact } from "./pages/Contact";
 import { Members } from "./pages/Members";
@@ -24,7 +23,6 @@ export const router = createBrowserRouter([
       { path: "blog/:year", Component: BlogYear },
       { path: "blog/:year/:id", Component: BlogYear },
       { path: "vehicle", Component: Vehicle },
-      { path: "competitions", Component: Competitions },
       { path: "team", Component: Team },
       { path: "members", Component: Members },
       { path: "members/:id", Component: MemberPage },

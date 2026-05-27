@@ -33,7 +33,7 @@ export function Blog() {
 
         {/* Description */}
         <p
-          className="text-gray-400 max-w-2xl mb-12"
+          className="text-gray-300 max-w-2xl mb-12"
           style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.8 }}
         >
           Explore our competition journey through the years. Each year contains blog entries, photos, and updates from our submarine robotics competitions and development milestones.
@@ -57,7 +57,7 @@ export function Blog() {
 
               {/* Card Description */}
               <p
-                className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors"
+                className="text-gray-300 text-sm group-hover:text-gray-300 transition-colors"
                 style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.6 }}
               >
                 View entries and competition updates from {year}
@@ -92,7 +92,7 @@ export function Blog() {
               No Archive
             </div>
             <p
-              className="text-gray-500 text-sm max-w-xs"
+              className="text-gray-400 text-sm max-w-xs"
               style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.8 }}
             >
               Blog entries are coming soon. Check back later for updates from our competitions and development journey.

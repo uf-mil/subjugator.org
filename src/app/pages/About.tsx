@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { 
-  Target, 
-  History, 
-  Users, 
-  GraduationCap, 
-  Trophy,
+import {
+  Target,
+  History,
+  GraduationCap,
   Code,
   Zap,
   Settings
@@ -15,7 +13,6 @@ const tabs = [
   { id: 'history', label: 'Our Journey', icon: <History size={18} /> },
   { id: 'departments', label: 'Departments', icon: <Settings size={18} /> },
   { id: 'advisors', label: 'Leadership', icon: <GraduationCap size={18} /> },
-  { id: 'achievements', label: 'Recognition', icon: <Trophy size={18} /> },
 ];
 
 const timeline = [
@@ -96,7 +93,7 @@ export function About() {
                 className={`flex items-center gap-3 px-6 py-4 rounded-xl font-orbitron text-xs tracking-widest uppercase transition-all border whitespace-nowrap ${
                   activeTab === tab.id 
                     ? 'bg-cyan-400 text-[#030d1a] border-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.2)]' 
-                    : 'bg-white/5 text-gray-400 border-white/10 hover:border-cyan-400/30'
+                    : 'bg-white/5 text-gray-300 border-white/10 hover:border-cyan-400/30'
                 }`}
               >
                 {tab.icon}
@@ -111,18 +108,18 @@ export function About() {
             {activeTab === 'mission' && (
               <div className="animate-fadeIn space-y-8">
                 <h2 className="font-orbitron text-2xl text-white">Innovation & Education</h2>
-                <p className="text-gray-400 font-inter leading-relaxed text-lg">
+                <p className="text-gray-300 font-inter leading-relaxed text-lg">
                   SubjuGator is an autonomous underwater vehicle engineered from the ground up by students at the University of Florida. 
                   Our mission focuses on advancing marine robotics through novel sensor fusion, adaptive control, and cross-disciplinary collaboration.
                 </p>
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
                     <h4 className="text-cyan-400 font-orbitron text-sm mb-3 uppercase">Research</h4>
-                    <p className="text-gray-500 text-sm">Pushing the boundaries of autonomous navigation and underwater perception using cutting-edge sensors.</p>
+                    <p className="text-gray-400 text-sm">Pushing the boundaries of autonomous navigation and underwater perception using cutting-edge sensors.</p>
                   </div>
                   <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
                     <h4 className="text-cyan-400 font-orbitron text-sm mb-3 uppercase">Excellence</h4>
-                    <p className="text-gray-500 text-sm">Representing UF at international competitions, maintaining a legacy as 7x RoboSub Champions.</p>
+                    <p className="text-gray-400 text-sm">Representing UF at international competitions, maintaining a legacy as 7x RoboSub Champions.</p>
                   </div>
                 </div>
               </div>
@@ -138,7 +135,7 @@ export function About() {
                       <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />
                       <span className="font-orbitron text-cyan-400 text-sm font-bold">{item.year}</span>
                       <h3 className="text-white font-orbitron text-lg mt-1">{item.title}</h3>
-                      <p className="text-gray-500 text-sm font-inter mt-2">{item.description}</p>
+                      <p className="text-gray-400 text-sm font-inter mt-2">{item.description}</p>
                     </div>
                   ))}
                 </div>
@@ -157,7 +154,7 @@ export function About() {
                       </div>
                       <div className="flex-1 text-left">
                         <h3 className="text-white font-orbitron text-lg mb-2">{dept.name}</h3>
-                        <p className="text-gray-500 text-sm font-inter mb-4 leading-relaxed">{dept.description}</p>
+                        <p className="text-gray-400 text-sm font-inter mb-4 leading-relaxed">{dept.description}</p>
                         <div className="flex flex-wrap gap-2">
                           {dept.skills.map(skill => (
                             <span key={skill} className="px-3 py-1 rounded-full bg-cyan-400/10 text-cyan-400 text-[10px] font-orbitron tracking-widest uppercase">
@@ -181,43 +178,20 @@ export function About() {
                     <h3 className="text-white font-orbitron text-xl mb-1">Dr. Eric M. Schwartz</h3>
                     <p className="text-cyan-400 text-xs font-orbitron uppercase tracking-widest mb-6">Director, Machine Intelligence Lab</p>
                     <div className="space-y-4 border-t border-white/5 pt-6">
-                      <p className="text-gray-500 text-sm font-inter">Expertise: Embedded Systems, Robotics Education, Digital Design.</p>
+                      <p className="text-gray-400 text-sm font-inter">Expertise: Embedded Systems, Robotics Education, Digital Design.</p>
                     </div>
                   </div>
                   <div className="p-8 rounded-3xl bg-[#061525] border border-white/5 shadow-inner">
                     <h3 className="text-white font-orbitron text-xl mb-1">Dr. Carl Crane</h3>
                     <p className="text-cyan-400 text-xs font-orbitron uppercase tracking-widest mb-6">Professor, Mechanical & Aerospace Engineering</p>
                     <div className="space-y-4 border-t border-white/5 pt-6">
-                      <p className="text-gray-500 text-sm font-inter">Expertise: Autonomous Systems, Vehicle Robotics, Navigation Technology.</p>
+                      <p className="text-gray-400 text-sm font-inter">Expertise: Autonomous Systems, Vehicle Robotics, Navigation Technology.</p>
                     </div>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Tab: Achievements */}
-            {activeTab === 'achievements' && (
-              <div className="animate-fadeIn space-y-8">
-                <h2 className="font-orbitron text-2xl text-white">Legacy of Excellence</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                  <div className="text-center p-8 rounded-2xl bg-white/5 border border-white/5">
-                    <div className="text-4xl font-orbitron text-cyan-400 mb-2">7x</div>
-                    <p className="text-gray-400 text-xs font-orbitron uppercase tracking-tighter">RoboSub Champions</p>
-                  </div>
-                  <div className="text-center p-8 rounded-2xl bg-white/5 border border-white/5">
-                    <div className="text-4xl font-orbitron text-cyan-400 mb-2">20+</div>
-                    <p className="text-gray-400 text-xs font-orbitron uppercase tracking-tighter">Research Papers</p>
-                  </div>
-                  <div className="text-center p-8 rounded-2xl bg-white/5 border border-white/5">
-                    <div className="text-4xl font-orbitron text-cyan-400 mb-2">30+</div>
-                    <p className="text-gray-400 text-xs font-orbitron uppercase tracking-tighter">Active Members</p>
-                  </div>
-                </div>
-                <p className="text-gray-500 text-center font-inter italic">
-                  Recognized globally for innovation and technical merit in autonomous systems.
-                </p>
-              </div>
-            )}
           </div>
         </div>
 
@@ -226,7 +200,7 @@ export function About() {
           <div className="absolute inset-0 bg-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
           <div className="relative z-10">
             <h2 className="font-orbitron text-3xl text-white mb-4">Join the Next Generation</h2>
-            <p className="text-gray-400 font-inter max-w-xl mx-auto mb-10 leading-relaxed">
+            <p className="text-gray-300 font-inter max-w-xl mx-auto mb-10 leading-relaxed">
               We are always looking for passionate students from all backgrounds. No prior experience is required — only curiosity and the drive to innovate.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

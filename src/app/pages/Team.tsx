@@ -1,17 +1,25 @@
-import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import { YEAR_DATA, YearData } from "../data/TeamData";
 
 const FOUNDING_YEAR = 1996;
-const CURRENT_YEAR = 2025;
+const CURRENT_YEAR = 2026;
 const ALL_YEARS = Array.from(
   { length: CURRENT_YEAR - FOUNDING_YEAR + 1 },
   (_, i) => CURRENT_YEAR - i
 );
 
 export function Team() {
-  const [selectedYear, setSelectedYear] = useState<number>(CURRENT_YEAR);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const yearParam = Number(searchParams.get("year"));
+  const selectedYear =
+    Number.isFinite(yearParam) && yearParam >= FOUNDING_YEAR && yearParam <= CURRENT_YEAR
+      ? yearParam
+      : CURRENT_YEAR;
   const navigate = useNavigate();
+
+  const setSelectedYear = (year: number) => {
+    setSearchParams({ year: String(year) });
+  };
 
   const data = YEAR_DATA[selectedYear];
 
@@ -51,7 +59,7 @@ export function Team() {
           </button>
         </div>
         <p
-          className="text-gray-400 max-w-xl mb-8"
+          className="text-gray-300 max-w-xl mb-8"
           style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.8 }}
         >
           Driven by passion for robotics and engineering, our team of students works year-round across mechanical,
@@ -61,7 +69,7 @@ export function Team() {
         {/* Year selector */}
         <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-10">
           <span
-            className="text-gray-400 text-sm shrink-0"
+            className="text-gray-300 text-sm shrink-0"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
             Viewing year:
@@ -156,7 +164,7 @@ export function Team() {
                   >
                     {member.role}
                   </p>
-                  <p className="text-gray-600 text-xs" style={{ fontFamily: "Inter, sans-serif" }}>
+                  <p className="text-gray-500 text-xs" style={{ fontFamily: "Inter, sans-serif" }}>
                     {member.sub}
                   </p>
                 </div>
@@ -180,10 +188,10 @@ export function Team() {
                     >
                       {d.count.split(" ")[0]}
                     </div>
-                    <div className="text-gray-400 text-xs" style={{ fontFamily: "Inter, sans-serif" }}>
+                    <div className="text-gray-300 text-xs" style={{ fontFamily: "Inter, sans-serif" }}>
                       {d.label}
                     </div>
-                    <div className="text-gray-600 text-xs" style={{ fontFamily: "Inter, sans-serif" }}>
+                    <div className="text-gray-500 text-xs" style={{ fontFamily: "Inter, sans-serif" }}>
                       {d.count.split(" ").slice(1).join(" ")}
                     </div>
                   </div>
@@ -201,7 +209,7 @@ export function Team() {
               {selectedYear}
             </div>
             <p
-              className="text-gray-500 text-sm max-w-xs"
+              className="text-gray-400 text-sm max-w-xs"
               style={{ fontFamily: "Inter, sans-serif", lineHeight: 1.8 }}
             >
               Records for this year are still being compiled. Check back soon or{" "}

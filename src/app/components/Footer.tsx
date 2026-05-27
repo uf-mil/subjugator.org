@@ -21,7 +21,6 @@ const navLinks = [
   { label: "About", to: "/about" },
   { label: "Blog", to: "/blog" },
   { label: "Vehicle", to: "/vehicle" },
-  { label: "Competitions", to: "/competitions" },
   { label: "Team", to: "/team" },
   { label: "Sponsors", to: "/sponsors" },
   { label: "Contact", to: "/contact" },
@@ -57,7 +56,7 @@ export function Footer() {
               key={link.label}
               to={link.to}
               className={({ isActive }) =>
-                `text-xs tracking-wide transition-colors ${isActive ? "text-cyan-400" : "text-gray-600 hover:text-gray-400"}`
+                `text-xs tracking-wide transition-colors ${isActive ? "text-cyan-400" : "text-gray-500 hover:text-gray-300"}`
               }
               style={{ fontFamily: "Inter, sans-serif" }}
             >
@@ -76,7 +75,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="w-7 h-7 rounded flex items-center justify-center text-gray-600 hover:text-cyan-400 transition-colors"
+                className="w-7 h-7 rounded flex items-center justify-center text-gray-500 hover:text-cyan-400 transition-colors"
               >
                 {s.icon}
               </a>

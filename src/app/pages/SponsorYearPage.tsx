@@ -52,7 +52,7 @@ export function SponsorYearPage() {
           <h1 className="font-orbitron text-4xl md:text-5xl text-white mb-6">
             {data.title}
           </h1>
-          <p className="text-gray-400 font-inter leading-relaxed text-lg italic border-l-2 border-cyan-900/50 pl-6">
+          <p className="text-gray-300 font-inter leading-relaxed text-lg italic border-l-2 border-cyan-900/50 pl-6">
             {data.intro}
           </p>
         </div>
@@ -118,7 +118,7 @@ export function SponsorYearPage() {
                         {sponsor.name}
                       </h4>
                       {sponsor.description && (
-                        <p className="text-gray-500 font-inter text-xs leading-relaxed">
+                        <p className="text-gray-400 font-inter text-xs leading-relaxed">
                           {sponsor.description}
                         </p>
                       )}
@@ -132,7 +132,7 @@ export function SponsorYearPage() {
 
         {/* Footer Contact */}
         <div className="mt-20 p-8 rounded-2xl border border-dashed border-cyan-400/30 text-center">
-          <p className="text-gray-400 font-inter mb-4">
+          <p className="text-gray-300 font-inter mb-4">
             Interested in helping our team? Please contact our faculty advisor:
           </p>
           <a 

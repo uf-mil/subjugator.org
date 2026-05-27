@@ -21,8 +21,33 @@ export type YearData = {
 };
 
 export const YEAR_DATA: Partial<Record<number, YearData>> = {
+  2026: {
+    image: "/images/robosub_2025_cool.jpg",
+    caption: "SubjuGator Team · 2026",
+    members: [
+      { name: "Russell MacGregor", role: "Team Lead", sub: "Electrical Engineering", initials: "RM", color: "#facc15", image: "/images/Russell_MacGregor.jpg" },
+      { name: "Ziyin Liu", role: "Software Lead", sub: "Computer Science", initials: "ZL", color: "#4ade80", image: "/images/Ziyin_Liu.jpg" },
+      { name: "Adam McAleer", role: "Mechanical Lead", sub: "Mechanical Engineering", initials: "AM", color: "#00d4ff", image: "/images/Adam_McAleer.jpg" },
+      { name: "Joseph Goodman", role: "Electrical Lead", sub: "Electrical Engineering", initials: "JG", color: "#facc15", image: "/images/Joseph_Goodman.png" },
+      { name: "Adam Hamdan", role: "Mechanical Lead", sub: "Mechanical Engineering", initials: "AH", color: "#00d4ff", image: "/images/Adam_Hamdan.jpg" },
+      { name: "Ryan Hoburg", role: "Mechanical Lead", sub: "Mechanical Engineering", initials: "RH", color: "#00d4ff", image: "/images/Ryan_Hoburg.jpg" },
+      { name: "Sophie Lanahan", role: "Mechanical Lead", sub: "Aerospace Engineering", initials: "SL", color: "#00d4ff", image: "/images/Sophie_Lanahan.png" },
+      { name: "Carlos Chavez", role: "Software Lead", sub: "Computer Science", initials: "CC", color: "#4ade80", image: "/images/Carlos_Chavez.jpg" },
+      { name: "Ethan Mitchell", role: "Electrical Lead", sub: "Computer Engineering", initials: "EM", color: "#4ade80", image: "/images/Ethan_Mitchell.png" },
+      { name: "Erik Neff-Flahan", role: "Electrical Lead", sub: "Electrical Engineering", initials: "EN", color: "#facc15", image: "/images/Erik_Neff-Flahan.jpg" },
+      { name: "Daniel McAleer", role: "Mechanical Lead", sub: "Mechanical Engineering", initials: "DM", color: "#00d4ff", image: "/images/Daniel_McAleer.jpg" },
+      { name: "Mohana Pamidimukkala", role: "Software Lead", sub: "Computer Engineering", initials: "MP", color: "#4ade80", image: "" },
+      { name: "Daniel Parra", role: "Software Lead", sub: "Computer Science", initials: "DP", color: "#4ade80", image: "/images/Daniel_Parra.jpg" },
+
+    ],
+    disciplines: [
+      { label: "Mechanical", count: "5 members", color: "#00d4ff" },
+      { label: "Electrical", count: "3 members", color: "#facc15" },
+      { label: "Software", count: "5 members", color: "#4ade80" },
+    ],
+  },
   2025: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2025",
     members: [
       { name: "Adam McAleer", role: "Mechanical Lead", sub: "Mechanical Engineering", initials: "AM", color: "#00d4ff", image: "/images/Adam_McAleer.jpg" },
@@ -46,7 +71,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2024: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2024",
     members: [
       { name: "Cameron Brown", role: "Software Lead", sub: "Computer Science", initials: "CB", color: "#4ade80", image: "/images/Cameron_Brown.jpg" },
@@ -70,7 +95,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2023: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2023",
     members: [
       { name: "Andres Pulido", role: "Team Member", sub: "Mechanical Engineering", initials: "AP", color: "#00d4ff", image: "/images/Andres_Pulido.jpg" },
@@ -86,7 +111,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2022: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2022",
     members: [
       { name: "Alex Kuzmicki", role: "Electrical Systems Leader", sub: "MS Electrical Engineering", initials: "AK", color: "#facc15", image: "/images/Alex_Kuzmicki.jpg" },
@@ -114,7 +139,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2021: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2021",
     members: [
       { name: "Damir Fayzulaev", role: "Mechanical Systems", sub: "BS Mechanical Engineering", initials: "DF", color: "#00d4ff", image: "" },
@@ -139,7 +164,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2020: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2020",
     members: [
       { name: "Andres Pulido", role: "Team and Mechanical Systems Leader", sub: "BS Mechanical Engineering", initials: "AP", color: "#00d4ff", image: "/images/Andres_Pulido.jpg" },
@@ -165,7 +190,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2019: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2019",
     members: [
       { name: "Jaxon Brown", role: "Team and Systems Leader", sub: "BS Computer Engineering", initials: "JB", color: "#4ade80", image: "/images/Jaxon_Brown.jpg" },
@@ -192,7 +217,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2018: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2018",
     members: [
       { name: "Daniel Volya", role: "Team Leader and Software Systems", sub: "BS Computer Engineering", initials: "DV", color: "#4ade80", image: "/images/Daniel_Volya.jpg" },
@@ -224,7 +249,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2017: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2017",
     members: [
       { name: "Daniel Dugger", role: "Electrical Systems Lead", sub: "BS Electrical Engineering (2019)", initials: "DD", color: "#facc15", image: "/images/Daniel_Dugger.jpg" },
@@ -254,7 +279,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2016: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2016",
     members: [
       { name: "Ralph Leyva", role: "Team Lead, Software Systems", sub: "BS CS & Engineering", initials: "RL", color: "#4ade80", image: "/images/Ralph_Leyva.jpg" },
@@ -289,7 +314,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2015: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2015",
     members: [
       { name: "Jason Nezvadovitz", role: "Mechanical Lead, Project Coordinator", sub: "BS ME (2016)", initials: "JN", color: "#00d4ff", image: "/images/Jason_Nezvadovitz.jpg" },
@@ -325,7 +350,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2014: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2014",
     members: [
       { name: "Patrick Walters", role: "Team Leader", sub: "PhD (2015)", initials: "PW", color: "#00d4ff", image: "/images/Patrick_Walters.jpg" },
@@ -351,7 +376,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2013: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2013",
     members: [
       { name: "Patrick Walters", role: "Team Leader", sub: "PhD (2015)", initials: "PW", color: "#00d4ff", image: "/images/Patrick_Walters.jpg" },
@@ -373,7 +398,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2012: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2012",
     members: [
       { name: "Nic Fischer", role: "Team Leader", sub: "PhD (2012)", initials: "NF", color: "#00d4ff", image: "/images/Nic_Fischer.jpg" },
@@ -396,7 +421,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2011: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2011",
     members: [
       { name: "Devin Hughes", role: "Team Leader", sub: "PhD (2011)", initials: "DH", color: "#00d4ff", image: "/images/Devin_Hughes.jpg" },
@@ -420,7 +445,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2010: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2010",
     members: [
       { name: "Patrick Walters", role: "Project Leader", sub: "BS ME (2011)", initials: "PW", color: "#00d4ff", image: "/images/Patrick_Walters.jpg" },
@@ -447,7 +472,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2009: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2009",
     members: [
       { name: "Tom Feeney", role: "Project Leader", sub: "BS EE (2009)", initials: "TF", color: "#facc15", image: "/images/Tom_Feeney.jpg" },
@@ -476,7 +501,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2008: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2008",
     members: [
       { name: "Don Burnette", role: "Project Leader", sub: "BSEE, BS Physics, BS Math (2008)", initials: "DB", color: "#facc15", image: "/images/Don_Burnette.jpg" },
@@ -509,7 +534,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2007: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2007",
     members: [
       { name: "Kevin Claycomb", role: "Project Leader", sub: "MSEE/PhD", initials: "KC", color: "#facc15", image: "/images/Kevin_Claycomb.jpg" },
@@ -534,7 +559,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2006: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2006",
     members: [
       { name: "Carlo Francis", role: "Project Leader", sub: "MS Electrical Engineering", initials: "CF", color: "#facc15", image: "/images/Carlo_Francis.jpg" },
@@ -561,7 +586,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2005: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2005",
     members: [
       { name: "James Greco", role: "Project Leader", sub: "MS EE / PhD", initials: "JG", color: "#facc15", image: "/images/James_Greco.jpg" },
@@ -584,7 +609,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2004: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2004",
     members: [
       { name: "Rolando Panez", role: "Project Leader", sub: "MS Electrical Engineering", initials: "RP", color: "#facc15", image: "/images/Rolando_Panez.jpg" },
@@ -602,7 +627,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2003: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2003",
     members: [
       { name: "Max Makeev", role: "Project Leader", sub: "Electrical and Computer Engineering", initials: "MM", color: "#4ade80", image: "" },
@@ -624,7 +649,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2002: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2002",
     members: [
       { name: "Jason W. Grzywana", role: "Project Leader", sub: "Electrical and Computer Engineering", initials: "JG", color: "#4ade80", image: "" },
@@ -643,7 +668,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2001: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2001",
     members: [
       { name: "Scott Kanowitz", role: "Project Co-Leader", sub: "Electrical and Computer Engineering", initials: "SK", color: "#4ade80", image: "" },
@@ -663,7 +688,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   2000: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 2000",
     members: [
       { name: "Scott Nichols", role: "Project Leader", sub: "Electrical and Computer Engineering", initials: "SN", color: "#4ade80", image: "" },
@@ -683,7 +708,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   1999: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 1999",
     members: [
       { name: "Scott Nichols", role: "Project Leader", sub: "Electrical and Computer Engineering", initials: "SN", color: "#4ade80", image: "" },
@@ -702,7 +727,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   1998: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 1998",
     members: [
       { name: "Taehoon Choi", role: "Project Leader", sub: "Electrical and Computer Engineering", initials: "TC", color: "#4ade80", image: "" },
@@ -718,7 +743,7 @@ export const YEAR_DATA: Partial<Record<number, YearData>> = {
     ],
   },
   1996: {
-    image: "https://images.unsplash.com/photo-1635246550194-11af93a2763f?q=80&w=1080",
+    image: "/images/robosub_2025_cool.jpg",
     caption: "SubjuGator Team · 1996",
     members: [
       { name: "Bob Pitzer", role: "Project Leader", sub: "Mechanical Engineering", initials: "BP", color: "#00d4ff", image: "" },

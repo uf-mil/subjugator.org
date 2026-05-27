@@ -52,7 +52,7 @@ export function MemberPage() {
               >
                 <p className="text-cyan-400 text-sm">{h.year}</p>
                 <p className="text-white">{h.role}</p>
-                <p className="text-gray-400 text-sm">{h.sub}</p>
+                <p className="text-gray-300 text-sm">{h.sub}</p>
               </div>
             ))}
         </div>

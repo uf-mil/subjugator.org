@@ -22,19 +22,6 @@ export interface BlogYearData {
 }
 
 export const BLOG_DATA: Partial<Record<number, BlogYearData>> = {
-  2020: {
-    year: 2020,
-    image: "/images/Subjugator-Logo2.png",
-    imageCaption: "2020 SubjuGator Logo",
-    entries: [
-      {
-        id: "mil-kick-off-meeting-2020",
-        title: "MIL KICK-OFF MEETING",
-        date: "Nov 4, 2020",
-        content: "Follow this link to watch the full video: https://tinyurl.com/mil-kickoff-f20",
-      },
-    ],
-  },
   2017: {
     year: 2017,
     image: "/images/Subjugator-Logo2.png",
