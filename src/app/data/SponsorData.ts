@@ -25,6 +25,86 @@ export interface SponsorYearDetail {
 }
 
 export const SPONSOR_DATA: Record<number, SponsorYearDetail> = {
+  2026: {
+    title: "Sponsors 2026",
+    intro: "We have been very fortunate to have generous partners in industry and at the University of Florida to support the SubjuGator project. Listed below are active sponsors for the SubjuGator project at the University of Florida. For more information about becoming a sponsor, please see our sponsorship packet.",
+    tiers: [
+      {
+        name: "Diamond Sponsors",
+        sponsors: [
+          {
+            name: "Sylphase",
+            logo: "/images/Sylphase.png",
+            description: "",
+            width: 300,
+          },
+          {
+            name: "L3Harris",
+            logo: "/images/L3Harris.png",
+            description: "",
+            width: 600,
+          },
+          {
+            name: "Erik de la Iglesia",
+            logo: "/images/Erik.png",
+            description: "MIL Alumnus",
+            width: 147,
+          },
+        ],
+      },
+      {
+        name: "Gold Sponsors",
+        sponsors: [
+          {
+            name: "Texas Instruments",
+            logo: "/images/ti-300x105.jpg",
+            description: "",
+            width: 450,
+          },
+        ],
+      },
+      {
+        name: "Silver Sponsors",
+        sponsors: [
+          {
+            name: "IEEE Gainesville",
+            logo: "/images/ieeelogo.gif",
+            description: "Gainesville Section",
+            width: 250,
+          },
+          {
+            name: "Matt Langford",
+            logo: "/images/Matthew_Langford.jpg",
+            description: "MIL Alumnus",
+            width: 147,
+          },
+          {
+            name: "Anonymous",
+            logo: "/images/sponsor_anonymous.svg",
+            description: "MIL Alumnus",
+            width: 147,
+          },
+        ],
+      },
+      {
+        name: "Bronze Sponsors",
+        sponsors: [
+          {
+            name: "Dr. Andrew Gray",
+            logo: "/images/Andy_Gray.jpg",
+            description: "MIL Alumnus",
+            width: 147,
+          },
+          {
+            name: "DigiKey",
+            logo: "/images/sponsor_digikey.png",
+            description: "",
+            width: 250,
+          },
+        ],
+      },
+    ],
+  },
   2023: {
     title: "Sponsors 2023",
     intro: "We have been very fortunate to have generous partners in industry and at the University of Florida to support the SubjuGator project. Listed below are active sponsors for the SubjuGator project at the University of Florida. For more information about becoming a sponsor, please see our sponsorship packet.",
@@ -2098,6 +2178,7 @@ export const SPONSOR_DATA: Record<number, SponsorYearDetail> = {
 };
 
 export const SPONSOR_YEARS: SponsorYear[] = [
+  { year: 2026, label: "Sponsors 2026", href: "/sponsors/2026" },
   { year: 2023, label: "Sponsors 2023", href: "/sponsors/2023" },
   { year: 2022, label: "Sponsors 2022", href: "/sponsors/2022" },
   { year: 2021, label: "Sponsors 2021", href: "/sponsors/2021" },
