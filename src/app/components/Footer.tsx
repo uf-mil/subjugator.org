@@ -20,7 +20,8 @@ function DiscordIcon({ size = 16 }: { size?: number }) {
 const navLinks = [
   { label: "About", to: "/about" },
   { label: "Blog", to: "/blog" },
-  { label: "Vehicle", to: "/vehicle" },
+  { label: "RoboSub", to: "/vehicle" },
+  { label: "AUV", to: "/auv" },
   { label: "Team", to: "/team" },
   { label: "Sponsors", to: "/sponsors" },
   { label: "Contact", to: "/contact" },
